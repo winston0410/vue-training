@@ -30,22 +30,7 @@
   </div>
   <ul v-else class="films">
     <li v-for="film in films" :key="film.title" class="film card">
-      <img class="poster" :src="film.poster" />
-      <p class="title">
-        {{ film.title }}
-        <span class="rating">★★★★</span>
-      </p>
-      <dl>
-        <dt>Release date</dt>
-        <dd>{{ film.released }}</dd>
-        <dt>Director</dt>
-        <dd>{{ film.director }}</dd>
-        <dt>Actors</dt>
-        <dd>{{ film.actors }}</dd>
-      </dl>
-      <p class="plot">
-        {{ film.plot }}
-      </p>
+      <film v-bind="film"/>
     </li>
   </ul>
 </template>
@@ -70,6 +55,8 @@ interface State {
 }
 
 import { defineComponent } from "vue";
+import Film from "./Film.vue";
+
 export default defineComponent({
   data(): State {
     return {
@@ -111,6 +98,9 @@ export default defineComponent({
         },
       ],
     };
+  },
+  components: {
+    Film,
   },
   methods: {
     handleSubmit(e: SubmitEvent) {
