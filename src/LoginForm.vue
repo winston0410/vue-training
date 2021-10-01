@@ -54,7 +54,9 @@ export default defineComponent({
   methods: {
     handleSubmit(e: SubmitEvent) {
       e.preventDefault();
-      this.$emit('updateLoggedIn', true)
+      if(this.email === "test@test.com" && this.password === "test1234"){
+      this.$store.dispatch("login", { user: "John Smith" })
+      }
     },
   },
 });

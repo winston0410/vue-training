@@ -9,10 +9,7 @@
 import { defineComponent } from "vue";
 import LoginForm from "./LoginForm.vue";
 import SearchFilm from "./SearchFilm.vue";
-
-interface IApp {
-  loggedIn: boolean;
-}
+import { mapState } from "vuex";
 
 export default defineComponent({
   components: {
@@ -25,11 +22,9 @@ export default defineComponent({
       this.loggedIn = value;
     },
   },
-  data(): IApp {
-    return {
-      loggedIn: false,
-    };
-  },
+  computed: {
+      ...mapState(["loggedIn"])
+  }
 });
 </script>
 
