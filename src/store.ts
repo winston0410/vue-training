@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import createPersistedState from 'vuex-persistedstate'
+import router from './router'
 
 export interface IStore {
     user: null;
@@ -27,6 +28,7 @@ export default createStore({
     login ({ commit }, { user }) {
       commit('setLoggedIn', true)
       commit('setUser', user)
+      router.push("/search")
     }
   }
 })

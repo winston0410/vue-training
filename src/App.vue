@@ -1,21 +1,14 @@
 <template>
-  <div>
-    <login-form v-if="!loggedIn" @updateLoggedIn="updateLoggedIn" />
-    <search-film v-else />
-  </div>
+    <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import LoginForm from "./LoginForm.vue";
-import SearchFilm from "./SearchFilm.vue";
+//  import LoginForm from "./LoginForm.vue";
+//  import SearchFilm from "./SearchFilm.vue";
 import { mapState } from "vuex";
 
 export default defineComponent({
-  components: {
-    LoginForm,
-    SearchFilm,
-  },
   methods: {
     updateLoggedIn(value: boolean) {
       console.log('method executed', value)
