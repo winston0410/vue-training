@@ -24,7 +24,7 @@
         v-model="password"
         required
       />
-
+      <span v-if="error">{{ error }}</span>
       <p><button type="submit">Login</button></p>
     </form>
   </div>
@@ -35,6 +35,7 @@ interface State {
   title: string;
   email: string;
   password: string;
+  error: string;
 }
 
 import { defineComponent } from "vue";
@@ -46,6 +47,7 @@ export default defineComponent({
       title: "Authentication",
       email: "",
       password: "",
+      error: "",
     };
   },
   components: {
@@ -54,8 +56,10 @@ export default defineComponent({
   methods: {
     handleSubmit(e: SubmitEvent) {
       e.preventDefault();
-      if(this.email === "test@test.com" && this.password === "test1234"){
-      this.$store.dispatch("login", { user: "John Smith" })
+      if (this.email === "test@test.com" && this.password === "test1234") {
+        this.$store.dispatch("login", { user: "John Smith" });
+      } else {
+        this.error = "You have entered the wrong credential"
       }
     },
   },
